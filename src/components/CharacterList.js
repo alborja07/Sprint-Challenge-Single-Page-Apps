@@ -17,6 +17,8 @@ export default function CharacterList() {
       .then(response => {
         // console.log(response.data.results);
           setCharacters(response.data.results);
+          const char = response.data.results.filter(character =>
+            character.name.toLowerCase().includes(query.toLowerCase())
         })
         .catch(error => {
           console.error('Server Error', error);

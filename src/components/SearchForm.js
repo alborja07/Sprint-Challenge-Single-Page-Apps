@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import axios from 'axios';
 
 export default function SearchForm() {
-//  const [data, setData] = useState([])
+ const [data, setData] = useState([])
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export default function SearchForm() {
       character.name.toLowerCase().includes(query.toLowerCase())
       );
       
-    // setData(char);
+    setData(char);
        });
 
       }, [query]);
@@ -35,17 +35,21 @@ export default function SearchForm() {
         autoComplete="off"
       />
       </form>
-      {/* <div>
-        {data.map(data => {
+      <div>
+        {data.map(char => {
           return (
-            <div key={data.id}>
-             {data.name}
+            <div>
+             {char.name}
               </div>
           );
         })}
-      </div> */}
+      </div>
       
        </section>
   );
 
 }
+
+
+//set up a new searchroute.js that has search form at the top
+
