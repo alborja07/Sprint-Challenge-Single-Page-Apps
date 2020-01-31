@@ -4,6 +4,7 @@ import Header from "./components/Header.js";
 import Welcome from './components/WelcomePage';
 import CharacterList from './components/CharacterList';
 import CharacterCard from './components/CharacterCard';
+import SearchForm from './components/SearchForm';
 
  
 
@@ -13,6 +14,7 @@ export default function App() {
     <main>
       <Header />
       <Welcome />
+      <SearchForm />
       <Route exact path ='/' component={CharacterList} />
       
     </main>
