@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import CharacterCard from './CharacterCard'
 import {
-  Card, CardImg, CardBody,
-  CardTitle, CardSubtitle, Row, Col
+  Container, Row
 } from 'reactstrap';
 
 export default function CharacterList() {
@@ -26,42 +26,49 @@ export default function CharacterList() {
   }, []);
 
   return (
-    <section className="character-list">
-      <h2>{characters.map(character => (
-        <CharacterInfo key={character.id} character={character}/>
-        
-      ))}</h2>
-    </section>
+    <Container>
+      <Row>      
+        <section className="character-list">
+          <h2>{characters.map(character => {
+            return (
+            <CharacterCard key={ character.id } character={ character }/>
+            
+          );
+            })}</h2>
+          
+        </section>
+      </Row>
+    </Container>
   );
 }
 
-function CharacterInfo({ character }) {
-  const { name, species, gender, origin, image } = character;
-  return (
-    <div>
-      <Row>
-        <Col sm='3'>
-      <Card>
-      <CardImg top width="50%" src={image} alt="Card image cap" />
-      <CardBody>
-      <CardTitle>{name}</CardTitle>
+// function CharacterCard({ character }) {
+//   const { name, species, gender, origin, image } = character;
+//   return (
+//     <div>
+//       <Row>
+//         <Col sm='3'>
+//       <Card>
+//       <CardImg top width="50%" src={image} alt="Card image cap" />
+//       <CardBody>
+//       <CardTitle>{name}</CardTitle>
 
-      <CardSubtitle>
-          Species: <em>{species}</em>
-        </CardSubtitle>
-        <div>
-          Gender: <strong>{gender}</strong>
-        </div>
-        <div>
-          Origin: {origin.name}
-        </div>
-        {/* <div>
-          <img src={image}/>
-        </div> */}
-        </CardBody>
-      </Card>
-      </Col>
-      </Row>
-    </div>
-  );
-};
+//       <CardSubtitle>
+//           Species: <em>{species}</em>
+//         </CardSubtitle>
+//         <div>
+//           Gender: <strong>{gender}</strong>
+//         </div>
+//         <div>
+//           Origin: {origin.name}
+//         </div>
+//         {/* <div>
+//           <img src={image}/>
+//         </div> */}
+//         </CardBody>
+//       </Card>
+//       </Col>
+//       </Row>
+//     </div>
+//   );
+// };

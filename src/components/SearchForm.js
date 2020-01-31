@@ -1,12 +1,26 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import axios from 'axios';
 
 export default function SearchForm() {
- const [query, setQuery] = useState('');
+//  const [data, setData] = useState([])
+  const [query, setQuery] = useState('');
 
- const handleInputChange = e => {
-   setQuery(event.target.value);
- };
+  useEffect(() => {
+ 
+   axios.get('https://rickandmortyapi.com/api/character/')
+      .then(response => {
+       const char = response.data.results.filter(character =>
+      character.name.toLowerCase().includes(query.toLowerCase())
+      );
+      
+    // setData(char);
+       });
 
+      }, [query]);
+
+  const handleInputChange = event => {
+        setQuery(event.target.value);
+};
   return (
     <section className="search-form">
       <form>
@@ -21,7 +35,17 @@ export default function SearchForm() {
         autoComplete="off"
       />
       </form>
+      {/* <div>
+        {data.map(data => {
+          return (
+            <div key={data.id}>
+             {data.name}
+              </div>
+          );
+        })}
+      </div> */}
       
        </section>
   );
+
 }
