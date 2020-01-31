@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import {
+  Card, CardImg, CardBody,
+  CardTitle, CardSubtitle, Row, Col
+} from 'reactstrap';
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -35,23 +39,29 @@ function CharacterInfo({ character }) {
   const { name, species, gender, origin, image } = character;
   return (
     <div>
-     <h2>{name}</h2>
+      <Row>
+        <Col sm='3'>
+      <Card>
+      <CardImg top width="50%" src={image} alt="Card image cap" />
+      <CardBody>
+      <CardTitle>{name}</CardTitle>
 
-     <div>
-        Species: <em>{species}</em>
-      </div>
-      <div>
-        Gender: <strong>{gender}</strong>
-      </div>
-      <div>
-        Origin: {origin.name}
-      </div>
-      <div>
-        <img src={image}/>
-      </div>
-
-      
-      
+      <CardSubtitle>
+          Species: <em>{species}</em>
+        </CardSubtitle>
+        <div>
+          Gender: <strong>{gender}</strong>
+        </div>
+        <div>
+          Origin: {origin.name}
+        </div>
+        {/* <div>
+          <img src={image}/>
+        </div> */}
+        </CardBody>
+      </Card>
+      </Col>
+      </Row>
     </div>
   );
-}
+};
